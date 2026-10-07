@@ -50,6 +50,7 @@ The lab notebook explains and demonstrates:
 | --- | --- |
 | [`cnn_cifar100_model_comparison.ipynb`](./cnn_cifar100_model_comparison.ipynb) | Complete CNN implementation, 15-class CIFAR-100 experiment, and comparison of CNN and transformer models |
 | [`vgg16_transfer_learning_cifar.ipynb`](./vgg16_transfer_learning_cifar.ipynb) | Lecture-style lab on VGG-16 transfer learning, freezing, fine-tuning, and feature visualization |
+| [`LICENSE`](./LICENSE) | Custom MIT-style license and usage conditions |
 
 Generated files such as `experiment_log.json` and `model_comparison.csv` may
 also be produced when the notebook is executed. They contain experiment
@@ -78,8 +79,8 @@ configuration.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/codewithdark-git/CNN_lab.git
-cd CNN_lab
+git clone https://github.com/codewithdark-git/CNN_course.git
+cd CNN_course
 ```
 
 ### 2. Install the main dependencies
@@ -117,6 +118,14 @@ be downloaded.
    accuracy.
 6. Compare model quality against parameter count and training time.
 7. Write your own observations about errors, overfitting, and trade-offs.
+
+## License and usage condition
+
+This repository is available under a **custom MIT-style license**. Before
+using this material or learning from it, you must star the
+[CNN_lab repository on GitHub](https://github.com/codewithdark-git/CNN_course).
+See [`LICENSE`](./LICENSE) for the complete terms. This custom condition is
+part of the license and is not part of the standard OSI MIT License.
 
 ## Learning outcomes
 
