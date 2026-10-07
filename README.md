@@ -1,112 +1,137 @@
-# CNN Lab Submission Guide
+# CNN Course Lab
 
-This repository is for submitting your CNN lab assignment on GitHub. Follow
-the instructions below before uploading your work.
+This repository contains the lab work for a **Convolutional Neural Networks
+(CNNs)** course. It combines detailed explanations, executable PyTorch
+implementations, experiments, visualizations, and a model-comparison project
+for image classification.
 
-## What you must upload
+The course is taught by **[Qazim Sajjad](https://github.com/qazimsajjad)**.
+The lab work and repository are maintained by **[Ahsan umar](https://github.com/codewithdark-git)**.
 
-Upload exactly **two files**:
+## Project overview
 
-1. Your completed Jupyter Notebook (`.ipynb`)
-2. Your completed observation file (`.md`, `.pdf`, or `.docx`)
+The main project uses a 15-class subset of **CIFAR-100** to build and evaluate
+image-classification models. The notebook starts with a CNN implemented from
+scratch and then compares it with modern pretrained architectures on the same
+task:
 
-## File naming rules
+- Custom CNN
+- ResNet50
+- EfficientNet-B0
+- Inception-V3
+- Vision Transformer (ViT-Base/16)
+- Swin-Tiny
 
-### Notebook
+The implementations are designed to connect the theory of CNNs with the
+complete deep-learning workflow: preparing data, defining a model, training,
+evaluating, visualizing, and interpreting results.
 
-The notebook filename should describe the experiment. For example:
+## Topics covered
 
-```text
-cnn-lab-01.ipynb
+The lab notebook explains and demonstrates:
+
+- Image datasets, class labels, train/validation/test splits, and data loaders
+- Image resizing, normalization, and data augmentation
+- Convolutional layers, kernels, channels, feature maps, and receptive fields
+- Activation functions, pooling, flattening, and fully connected layers
+- Forward propagation and tensor-shape tracking
+- Cross-entropy loss, backpropagation, optimizers, and learning-rate schedules
+- Checkpointing, early stopping, and reproducible random seeds
+- Transfer learning and pretrained computer-vision architectures
+- CNN, transformer, and hybrid architecture differences
+- Feature-map and patch visualization
+- Accuracy, precision, recall, F1 score, and confusion matrices
+- Error analysis and predictions versus ground truth
+- Parameter count, training time, and accuracy trade-offs
+
+## Repository contents
+
+| File | Description |
+| --- | --- |
+| [`cnn_cifar100_model_comparison.ipynb`](./cnn_cifar100_model_comparison.ipynb) | Complete CNN implementation, 15-class CIFAR-100 experiment, and comparison of CNN and transformer models |
+| [`vgg16_transfer_learning_cifar.ipynb`](./vgg16_transfer_learning_cifar.ipynb) | Lecture-style lab on VGG-16 transfer learning, freezing, fine-tuning, and feature visualization |
+
+Generated files such as `experiment_log.json` and `model_comparison.csv` may
+also be produced when the notebook is executed. They contain experiment
+outputs and comparison data, not source code.
+
+## Dataset and experiment setup
+
+The reference experiment uses:
+
+- The first 15 classes of CIFAR-100
+- 6,750 training images
+- 750 validation images
+- 1,500 test images
+- A custom CNN trained with 32×32 inputs
+- Pretrained models trained with 224×224 inputs, except Inception-V3 at
+  299×299
+- A fixed seed of 42 for reproducibility
+
+The notebook downloads or prepares the dataset through the normal torchvision
+workflow. A GPU is recommended, especially for the pretrained-model
+comparison, but the custom CNN can be run on a CPU with a smaller experiment
+configuration.
+
+## Running the lab
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/codewithdark-git/CNN_lab.git
+cd CNN_lab
 ```
 
-Do **not** put your name, roll number, or any other personal information inside
-the notebook. This includes:
+### 2. Install the main dependencies
 
-- Markdown cells
-- Code cells
-- Notebook metadata
-- Output text, graphs, and screenshots
-
-### Observation file
-
-The observation filename must follow this exact format:
-
-```text
-student-name_roll-number.extension
+```bash
+pip install torch torchvision torchaudio
+pip install numpy pandas matplotlib seaborn scikit-learn tqdm
 ```
 
-For example, a student named Ananya Sharma with roll number 23CS101 should use:
+Use the PyTorch installation selector at
+[pytorch.org](https://pytorch.org/get-started/locally/) if you need a
+CUDA-specific command for your system.
 
-```text
-ananya-sharma_23cs101.md
+### 3. Start Jupyter
+
+```bash
+pip install notebook
+jupyter notebook
 ```
 
-Use lowercase letters, replace spaces in the name with hyphens, and keep the
-roll number exactly as assigned.
+Start with [`cnn_cifar100_model_comparison.ipynb`](./cnn_cifar100_model_comparison.ipynb)
+for the complete CNN project, then run
+[`vgg16_transfer_learning_cifar.ipynb`](./vgg16_transfer_learning_cifar.ipynb)
+for the focused transfer-learning lab. Run the cells from top to bottom. The
+first run may take time because the dataset and pretrained model weights must
+be downloaded.
 
-## What to include
+## Suggested learning workflow
 
-### Jupyter Notebook
+1. Read the explanation before running each section.
+2. Record the input and output tensor shape after every major layer.
+3. Run the custom CNN first and inspect its training curves.
+4. Change one hyperparameter at a time and compare the result.
+5. Inspect feature maps and the confusion matrix instead of relying only on
+   accuracy.
+6. Compare model quality against parameter count and training time.
+7. Write your own observations about errors, overfitting, and trade-offs.
 
-Your notebook should contain:
+## Learning outcomes
 
-- Experiment or lab title
-- Objective
-- Dataset details
-- Model architecture and steps
-- Training and evaluation code
-- Output graphs and metrics
-- Short conclusion
+After completing this lab, a learner should be able to:
 
-Run the provided experiment and include its outputs. You may change
-hyperparameters to investigate their effects, but this is optional.
+- Implement a CNN image classifier in PyTorch.
+- Explain how convolution, pooling, and nonlinearities extract visual
+  features.
+- Build a reliable training and evaluation loop.
+- Apply transfer learning with pretrained vision models.
+- Select metrics appropriate for multiclass classification.
+- Diagnose model behavior using curves, feature maps, and confusion matrices.
+- Make an evidence-based comparison of accuracy, efficiency, and complexity.
 
-### Observation file
-
-Your observation file should contain:
-
-- Lesson or topic name
-- Important observations from the results
-- Challenges faced while running or understanding the experiment
-- What you learned
-- Final conclusion
-
-Write the observations yourself. **Do not use AI or any other AI tool to write,
-rewrite, summarize, or generate any part of the observation file.** The purpose
-is to demonstrate your own learning. Minor grammar or language mistakes are
-acceptable.
-
-## How to upload on GitHub
-
-1. Open this repository on GitHub.
-2. Select **Add file** and then **Upload files**.
-3. Select or drag in your notebook and observation file.
-4. Check both filenames carefully.
-5. Confirm that the notebook contains no personal information.
-6. Confirm that the observation filename follows the required format.
-7. Use a commit message such as:
-
-   ```text
-   Submit CNN Lab - 23CS101
-   ```
-
-8. Select **Commit changes**.
-9. Share the uploaded observation file as instructed by your teacher.
-
-## Final checklist
-
-Before submitting, confirm that:
-
-- [ ] I uploaded exactly one notebook and one observation file.
-- [ ] My notebook has the `.ipynb` extension.
-- [ ] My observation file has the required name and extension.
-- [ ] My notebook contains no name, roll number, or other personal information.
-- [ ] My notebook includes code, outputs, metrics, and a conclusion.
-- [ ] My observation file includes observations, challenges, learning, and a conclusion.
-- [ ] I wrote the observation file myself without using AI.
-- [ ] I checked the uploaded files before sharing the submission.
-
-If you need to upload a corrected submission, keep the same naming format and
-replace the previous files unless your teacher asks you to keep multiple
-versions.
+If you use this material for learning, cite the original course guidance and
+acknowledge this repository. When submitting coursework, write your own
+observations and follow your instructor's submission and academic-integrity
+requirements.
