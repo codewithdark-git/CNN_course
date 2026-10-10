@@ -217,7 +217,7 @@ able to:
 
 This repository is available under a **custom MIT-style license**. Before
 using this material or learning from it, you must star the
-[CNN_lab repository on GitHub](https://github.com/codewithdark-git/CNN_lab).
+[From-Intro-to-Advanced-DL repository on GitHub](https://github.com/codewithdark-git/From-Intro-to-Advanced-DL).
 See [`LICENSE`](./LICENSE) for the complete terms. This custom condition is
 part of the license and is not part of the standard OSI MIT License.
 
